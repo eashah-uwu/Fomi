@@ -1,26 +1,158 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fbfaf8;
+  --foreground: #111111;
+  --surface: #ffffff;
+  --surface-raised: #fffefe;
+  --soft: #f8ede8;
+  --soft-strong: #f3ded6;
+  --soft-light: #fff9f6;
+  --soft-canvas: #fff4ee;
+  --soft-skeleton: #f2e5df;
+  --accent: #d07d60;
+  --accent-strong: #cf7456;
+  --accent-button: #e89b84;
+  --muted: #6b7280;
+  --border: #ebebeb;
+  --brand: #020202;
+  --control: #82756f;
+  --control-muted: #b8aaa5;
+  --control-text: #4c4745;
+  --copy: #22201f;
+  --panel-copy: #2f2c2a;
+  --history-copy: #4d4541;
+  --history-muted: #9d918c;
+  --history-divider: #f4e7e1;
+  --input-border: #3c3b3a;
+  --placeholder: #77706d;
+  --toggle-copy: #736863;
+  --toggle-muted: #8b817c;
+  --control-chip: #f6f5f5;
+  --control-chip-copy: #59504c;
+  --app-shell-background:
+    radial-gradient(circle at 14% 20%, rgb(from var(--soft) r g b / 0.7), transparent 22rem),
+    linear-gradient(180deg, var(--background) 0%, var(--surface) 62%);
+  --skeleton-background:
+    linear-gradient(100deg, transparent 0%, rgb(from var(--surface) r g b / 0.54) 42%, transparent 72%);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-soft: var(--soft);
+  --color-soft-strong: var(--soft-strong);
+  --color-soft-light: var(--soft-light);
+  --color-soft-canvas: var(--soft-canvas);
+  --color-soft-skeleton: var(--soft-skeleton);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-button: var(--accent-button);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-brand: var(--brand);
+  --color-control: var(--control);
+  --color-control-muted: var(--control-muted);
+  --color-control-text: var(--control-text);
+  --color-copy: var(--copy);
+  --color-panel-copy: var(--panel-copy);
+  --color-history-copy: var(--history-copy);
+  --color-history-muted: var(--history-muted);
+  --color-history-divider: var(--history-divider);
+  --color-input-border: var(--input-border);
+  --color-placeholder: var(--placeholder);
+  --color-toggle-copy: var(--toggle-copy);
+  --color-toggle-muted: var(--toggle-muted);
+  --color-control-chip: var(--control-chip);
+  --color-control-chip-copy: var(--control-chip-copy);
+  --shadow-accent-button: 0 6px 14px rgb(from var(--accent) r g b / 0.23);
+  --shadow-avatar: 0 3px 16px rgb(78 44 31 / 0.1);
+  --shadow-control: 0 2px 12px rgb(70 44 35 / 0.04);
+  --shadow-control-raised: 0 5px 14px rgb(70 44 35 / 0.04);
+  --shadow-field: 0 5px 13px rgb(68 42 32 / 0.06);
+  --shadow-media: 0 1px 0 rgb(0 0 0 / 0.02);
+  --shadow-media-hover: 0 12px 28px rgb(63 45 38 / 0.13);
+  --shadow-history: 8px 0 0 rgb(61 54 49 / 0.72), 0 4px 20px rgb(0 0 0 / 0.05);
+  --shadow-history-thumb: 0 8px 20px rgb(85 48 35 / 0.16);
+  --shadow-select-content: 0 12px 32px rgb(70 44 35 / 0.12);
+  --shadow-progress-inset: inset 0 1px 2px rgb(from var(--accent) r g b / 0.08);
+  --shadow-panel-inset: inset 0 1px 0 rgb(from var(--surface) r g b / 0.54);
+  --font-sans: Poppins, Arial, Helvetica, sans-serif;
+  --font-mono: "Courier New", Courier, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  background: var(--background);
 }
 
 body {
+  min-width: 320px;
+  overflow-x: hidden;
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Poppins, Arial, Helvetica, sans-serif;
+}
+
+button,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: wait;
+}
+
+img {
+  object-fit: cover;
+}
+
+::selection {
+  background: rgb(from var(--accent) r g b / 0.22);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--soft);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+@keyframes skeleton-sheen {
+  from {
+    background-position: 180% 0;
+  }
+
+  to {
+    background-position: -60% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }
