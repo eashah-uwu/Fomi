@@ -170,6 +170,7 @@ The assignment asked for the implementation to match the design closely. In addi
 ## Bonus Reference Implementation
 https://fomi-theta.vercel.app/bonus
 
+please note that no interaction was implemented in the bonus implementation. It serves only as a visual aid for the design 
 
 
 ## Author
