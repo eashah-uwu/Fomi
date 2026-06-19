@@ -164,7 +164,8 @@ The assignment asked for the implementation to match the design closely. In addi
 - The interface is structured to feel closer to a real creative tool instead of a static mockup.
 
 ## Bonus Reference 
-- <img width="1898" height="844" alt="image" src="https://github.com/user-attachments/assets/50ec6321-33bd-4fba-b6e8-565037d94fc9" />
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/9310080a-1814-4535-a69d-e84f19252570" />
+
 
 ## Bonus Reference Implementation
 
