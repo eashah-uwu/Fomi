@@ -1,12 +1,15 @@
 import Image from "next/image";
+import { Play } from "lucide-react";
 import type { MediaItem } from "@/data/media";
 
 type MediaGridProps = {
   items: MediaItem[];
   isLoading: boolean;
+  mode: "image" | "video";
+  onItemSelect: (item: MediaItem) => void;
 };
 
-export function MediaGrid({ items, isLoading }: MediaGridProps) {
+export function MediaGrid({ items, isLoading, mode, onItemSelect }: MediaGridProps) {
   return (
     <section
       className="grid w-full grid-flow-dense grid-cols-2 gap-3 min-[821px]:grid-cols-3 min-[821px]:gap-3 min-[1181px]:grid-cols-4 min-[1181px]:gap-x-[13px] min-[1181px]:gap-y-5"
@@ -26,6 +29,7 @@ export function MediaGrid({ items, isLoading }: MediaGridProps) {
               type="button"
               key={item.id}
               aria-label={item.title}
+              onClick={() => onItemSelect(item)}
             >
               <Image
                 className="transition-[filter,transform] duration-500 hover:scale-[1.045] hover:saturate-[1.05] hover:contrast-[1.04]"
@@ -35,6 +39,13 @@ export function MediaGrid({ items, isLoading }: MediaGridProps) {
                 priority={index < 4}
                 sizes="(max-width: 768px) 46vw, (max-width: 1200px) 22vw, 180px"
               />
+              {mode === "video" ? (
+                <span className="absolute inset-0 grid place-items-center bg-foreground/10">
+                  <span className="grid size-10 place-items-center rounded-full bg-surface/90 text-accent shadow-control">
+                    <Play className="ml-0.5 size-5 fill-current" strokeWidth={2.2} />
+                  </span>
+                </span>
+              ) : null}
             </button>
           ))}
     </section>

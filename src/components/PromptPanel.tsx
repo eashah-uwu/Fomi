@@ -1,38 +1,97 @@
-import { ChevronDown, Sparkles } from "lucide-react";
+import type { KeyboardEvent } from "react";
+import { Check, ChevronDown, SlidersHorizontal, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import type { DropdownId } from "@/lib/dropdowns";
+import { cn } from "@/lib/utils";
+
+export type GenerationMode = "image" | "video";
+
+export type GenerationSettings = {
+  count: string;
+  ratio: string;
+  model: string;
+  style: string;
+  quality: string;
+};
 
 type PromptPanelProps = {
   prompt: string;
+  mode: GenerationMode;
+  settings: GenerationSettings;
+  activeDropdown: DropdownId | null;
   isGenerating: boolean;
   onPromptChange: (value: string) => void;
+  onModeChange: (mode: GenerationMode) => void;
+  onSettingsChange: (settings: Partial<GenerationSettings>) => void;
+  onDropdownChange: (dropdown: DropdownId | null) => void;
   onGenerate: () => void;
 };
 
-export function PromptPanel({ prompt, isGenerating, onPromptChange, onGenerate }: PromptPanelProps) {
+export function PromptPanel({
+  prompt,
+  mode,
+  settings,
+  activeDropdown,
+  isGenerating,
+  onPromptChange,
+  onModeChange,
+  onSettingsChange,
+  onDropdownChange,
+  onGenerate,
+}: PromptPanelProps) {
+  const handlePromptKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>) => {
+    if (event.key === "Enter" && !event.shiftKey) {
+      event.preventDefault();
+      onGenerate();
+    }
+  };
+
+  const handleOpenChange = (dropdown: DropdownId) => (open: boolean) => {
+    if (open) {
+      onDropdownChange(dropdown);
+    } else if (activeDropdown === dropdown) {
+      onDropdownChange(null);
+    }
+  };
+
   return (
     <aside
-      className="min-h-[451px] rounded-[17px] border border-accent/10 bg-soft px-[13px] pb-[18px] pt-4 shadow-panel-inset md:min-h-0 lg:min-h-[451px]"
+      className="rounded-[17px] border border-accent/10 bg-soft p-[17px] shadow-panel-inset min-[821px]:min-h-[500px]"
       aria-label="Generation controls"
     >
       <div
-        className="mx-1.5 mb-3 grid h-5 grid-cols-2 overflow-hidden rounded-full bg-surface"
+        className="mx-1.5 mb-4 grid h-7 grid-cols-2 gap-1 overflow-hidden rounded-full bg-surface p-1"
         role="tablist"
         aria-label="Generation mode"
       >
         <button
-          className="rounded-full bg-soft-strong text-[8px] font-bold text-toggle-copy transition-colors"
+          className={cn(
+            "rounded-full px-3 text-[10px] font-bold transition-colors",
+            mode === "image" ? "bg-soft-strong text-toggle-copy shadow-control" : "bg-transparent text-toggle-muted hover:bg-soft",
+          )}
           type="button"
           role="tab"
-          aria-selected="true"
+          aria-selected={mode === "image"}
+          onClick={() => onModeChange("image")}
         >
           Image
         </button>
         <button
-          className="rounded-full bg-transparent text-[8px] font-bold text-toggle-muted transition-colors hover:bg-soft"
+          className={cn(
+            "rounded-full px-3 text-[10px] font-bold transition-colors",
+            mode === "video" ? "bg-soft-strong text-toggle-copy shadow-control" : "bg-transparent text-toggle-muted hover:bg-soft",
+          )}
           type="button"
           role="tab"
-          aria-selected="false"
+          aria-selected={mode === "video"}
+          onClick={() => onModeChange("video")}
         >
           Video
         </button>
@@ -41,12 +100,13 @@ export function PromptPanel({ prompt, isGenerating, onPromptChange, onGenerate }
       <label className="sr-only" htmlFor="prompt-input">
         Describe the image to generate
       </label>
-      <div className="relative mb-[19px] min-h-[170px]">
+      <div className="relative mb-5 min-h-[225px]">
         <textarea
-          className="min-h-[170px] w-full resize-none rounded-2xl border-[1.5px] border-input-border bg-surface px-[11px] pb-[58px] pt-5 text-[11px] font-semibold leading-[1.45] text-foreground shadow-field outline-none placeholder:text-placeholder focus:border-accent focus:ring-4 focus:ring-accent/15"
+          className="min-h-[225px] w-full resize-none rounded-2xl border border-border bg-surface pb-[58px] pl-[13px] pr-1 pt-5 text-[11px] leading-[1.45] text-foreground shadow-field outline-none placeholder:text-placeholder focus:border-accent/50 focus:ring-4 focus:ring-accent/15"
           id="prompt-input"
           value={prompt}
           onChange={(event) => onPromptChange(event.target.value)}
+          onKeyDown={handlePromptKeyDown}
           placeholder="Describe you imaginations to be converted to piece of art ...."
           rows={7}
         />
@@ -61,12 +121,29 @@ export function PromptPanel({ prompt, isGenerating, onPromptChange, onGenerate }
         </Button>
       </div>
 
-      <div className="mb-6 grid grid-cols-[76px_48px_1fr] gap-[5px]" aria-label="Generation settings">
-        <Button variant="white" size="chip" type="button">
-          # Images
-        </Button>
-        <Select defaultValue="1:1">
-          <SelectTrigger aria-label="Number of images">
+      <div className="mb-5 grid grid-cols-[88px_64px_minmax(84px,1fr)] gap-1" aria-label="Generation settings">
+        <Select
+          open={activeDropdown === "count"}
+          value={settings.count}
+          onOpenChange={handleOpenChange("count")}
+          onValueChange={(count) => onSettingsChange({ count })}
+        >
+          <SelectTrigger className="text-xs text-center" aria-label={mode === "image" ? "Number of images" : "Number of videos"}>
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="1">{mode === "image" ? "1 image" : "1 video"}</SelectItem>
+            <SelectItem value="2">{mode === "image" ? "2 images" : "2 videos"}</SelectItem>
+            <SelectItem value="4">{mode === "image" ? "4 images" : "4 videos"}</SelectItem>
+          </SelectContent>
+        </Select>
+        <Select
+          open={activeDropdown === "ratio"}
+          value={settings.ratio}
+          onOpenChange={handleOpenChange("ratio")}
+          onValueChange={(ratio) => onSettingsChange({ ratio })}
+        >
+          <SelectTrigger className="text-xs text-center" aria-label="Aspect ratio">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -75,26 +152,120 @@ export function PromptPanel({ prompt, isGenerating, onPromptChange, onGenerate }
             <SelectItem value="16:9">16:9</SelectItem>
           </SelectContent>
         </Select>
-        <Button variant="white" size="chip" type="button">
-          <span>Model: </span>
-          <strong>Name</strong>
-          <ChevronDown className="size-3" strokeWidth={2.4} />
-        </Button>
+        <Select
+          open={activeDropdown === "model"}
+          value={settings.model}
+          onOpenChange={handleOpenChange("model")}
+          onValueChange={(model) => onSettingsChange({ model })}
+        >
+          <SelectTrigger className="min-w-0 text-xs text-center" aria-label="Model">
+            <SelectValue>{settings.model.replace("Fomi ", "")}</SelectValue>
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="Fomi Real">Real</SelectItem>
+            <SelectItem value="Fomi Art">Art</SelectItem>
+            <SelectItem value="Fomi Motion">Motion</SelectItem>
+          </SelectContent>
+        </Select>
       </div>
 
-      <div className="grid gap-6">
-        <Button className="h-[33px] justify-center gap-[53px] text-sm font-semibold" variant="white" size="pill" type="button">
-          <span>Advance</span>
-          <span className="grid size-[17px] place-items-center rounded-full bg-control-chip text-control-chip-copy" aria-hidden="true">
-            <ChevronDown className="size-3" strokeWidth={2.4} />
-          </span>
-        </Button>
-        <Button className="h-[33px] justify-center gap-[53px] text-sm font-semibold" variant="white" size="pill" type="button">
-          <span>Styles</span>
-          <span className="grid size-[17px] place-items-center rounded-full bg-control-chip text-control-chip-copy" aria-hidden="true">
-            <ChevronDown className="size-3" strokeWidth={2.4} />
-          </span>
-        </Button>
+      <div className="grid gap-3">
+        <DropdownMenu
+          modal={false}
+          open={activeDropdown === "advance"}
+          onOpenChange={handleOpenChange("advance")}
+        >
+          <DropdownMenuTrigger asChild>
+            <Button
+              className="h-[33px] w-full justify-center gap-[53px] text-sm font-normal"
+              variant="white"
+              size="pill"
+              type="button"
+            >
+              <span>Advance</span>
+              <span
+                className="grid size-[17px] place-items-center rounded-full bg-control-chip text-control-chip-copy"
+                aria-hidden="true"
+              >
+                <ChevronDown
+                  className={cn("size-3 transition-transform", activeDropdown === "advance" && "rotate-180")}
+                  strokeWidth={2.4}
+                />
+              </span>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent
+            align="start"
+            sideOffset={8}
+            className="grid grid-cols-2 gap-2 rounded-2xl border-border bg-surface p-2 shadow-select-content"
+          >
+            {["Balanced", "Detailed"].map((quality) => (
+              <DropdownMenuItem
+                className={cn(
+                  "flex h-8 cursor-pointer items-center justify-center gap-1 rounded-full text-[10px] font-bold",
+                  settings.quality === quality
+                    ? "bg-accent text-surface focus:bg-accent focus:text-surface"
+                    : "bg-soft-light text-control-text focus:bg-soft focus:text-control-text",
+                )}
+                key={quality}
+                onSelect={() => onSettingsChange({ quality })}
+              >
+                {settings.quality === quality ? (
+                  <Check className="size-3" strokeWidth={2.4} />
+                ) : (
+                  <SlidersHorizontal className="size-3" strokeWidth={2.4} />
+                )}
+                {quality}
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
+
+        <DropdownMenu
+          modal={false}
+          open={activeDropdown === "styles"}
+          onOpenChange={handleOpenChange("styles")}
+        >
+          <DropdownMenuTrigger asChild>
+            <Button
+              className="h-[33px] w-full justify-center gap-[53px] text-sm font-normal"
+              variant="white"
+              size="pill"
+              type="button"
+            >
+              <span>Styles</span>
+              <span
+                className="grid size-[17px] place-items-center rounded-full bg-control-chip text-control-chip-copy"
+                aria-hidden="true"
+              >
+                <ChevronDown
+                  className={cn("size-3 transition-transform", activeDropdown === "styles" && "rotate-180")}
+                  strokeWidth={2.4}
+                />
+              </span>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent
+            align="start"
+            sideOffset={8}
+            className="grid grid-cols-2 gap-2 rounded-2xl border-border bg-surface p-2 shadow-select-content"
+          >
+            {["Portrait", "Cinematic", "Editorial", "Anime"].map((style) => (
+              <DropdownMenuItem
+                className={cn(
+                  "flex h-8 cursor-pointer items-center justify-center rounded-full text-[10px] font-bold",
+                  settings.style === style
+                    ? "bg-accent text-surface focus:bg-accent focus:text-surface"
+                    : "bg-soft-light text-control-text focus:bg-soft focus:text-control-text",
+                )}
+                key={style}
+                onSelect={() => onSettingsChange({ style })}
+              >
+                {style}
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     </aside>
   );
