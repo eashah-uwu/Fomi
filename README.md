@@ -5,7 +5,7 @@ A responsive AI Content Generation interface built with Next.js as part of the T
 ## Live Demo
 
 **Vercel Deployment:**  
-https://YOUR-VERCEL-LINK.vercel.app
+fomi-theta.vercel.app
 
 ---
 
