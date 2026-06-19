@@ -1,36 +1,104 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Fomi Frontend Assessment
 
-## Getting Started
+A responsive AI Content Generation interface built with Next.js as part of the Tarum Frontend Developer Technical Assessment.
 
-First, run the development server:
+## Live Demo
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**Vercel Deployment:**  
+https://YOUR-VERCEL-LINK.vercel.app
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Design References
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Original Assessment Design
 
-## Learn More
+**Provided Mockup:**  
+[FIGMA_OR_ASSESSMENT_LINK]
 
-To learn more about Next.js, take a look at the following resources:
+### Bonus Creative Design
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+As part of the optional bonus submission, a second version was created with an original creative direction while maintaining the core AI image generation workflow.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Figma Design:**  
+[FIGMA_LINK_HERE]
 
-## Deploy on Vercel
+**Bonus Deployment:**  
+https://YOUR-BONUS-VERCEL-LINK.vercel.app
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Features
+
+### Core Requirements
+
+- Responsive implementation across mobile, tablet, desktop, and large screens
+- Reusable component architecture
+- Next.js App Router
+- Tailwind CSS styling
+- Mock API for generated content
+- Optimized image rendering using Next.js Image
+- Semantic HTML and accessibility considerations
+
+### Additional Enhancements
+
+- Prompt history system
+- Clickable history items
+- Previous generations remain accessible
+- Hover interactions
+- Loading states
+- Smooth transitions and micro-interactions
+- Responsive image gallery
+- Dark mode support (if implemented)
+
+---
+
+## Prompt History Behavior
+
+Unlike a simple single-generation interface, this implementation preserves previous prompts and generated content.
+
+Users can:
+
+- Submit multiple prompts
+- Browse previous generations
+- Click history items
+- Restore previous generated results
+- Continue generating without losing context
+
+---
+
+## Tech Stack
+
+### Framework
+
+- Next.js
+
+### Language
+
+- JavaScript
+
+### Styling
+
+- Tailwind CSS
+- CSS Modules
+
+### Tooling
+
+- ESLint
+- Git
+- GitHub
+- Vercel
+
+---
+
+## Project Structure
+
+```text
+src/
+├── app/
+├── components/
+├── hooks/
+├── lib/
+├── data/
+├── styles/
+└── public/
