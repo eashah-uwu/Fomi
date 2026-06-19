@@ -82,7 +82,9 @@ export function PromptContextCard({
               type="button"
               onClick={() => onSelect(record.id)}
             >
-              <p className="min-h-0 overflow-y-auto pr-2 text-[11px] font-semibold leading-[1.26]">{record.prompt}</p>
+              <p className="min-h-0 overflow-x-hidden overflow-y-auto break-words pr-2 text-[11px] font-semibold leading-[1.26]">
+                {record.prompt}
+              </p>
               <p className="mt-3 text-[9px] font-bold text-muted">
                 {record.mode === "image" ? "Image" : "Video"} / {record.style} / {record.createdAt}
               </p>
