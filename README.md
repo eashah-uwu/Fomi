@@ -82,8 +82,8 @@ The goal of this project is not just to build a working interface, but to make t
 ### 1. Clone the repository
 
 ```bash
-git clone [(https://github.com/eashah-uwu/Fomi/)]
-cd [project-folder]
+git clone https://github.com/eashah-uwu/Fomi/
+cd Fomi
 ```
 
 ### 2. Install dependencies
