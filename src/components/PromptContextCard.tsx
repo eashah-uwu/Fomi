@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Play } from "lucide-react";
 import { useEffect, useRef } from "react";
+import { Button } from "@/components/ui/button";
 import type { MediaItem } from "@/data/media";
 import { cn } from "@/lib/utils";
 
@@ -73,28 +74,34 @@ export function PromptContextCard({
         >
           <div
             className={cn(
-              "grid h-[190px] content-between rounded-[15px] rounded-br-none bg-soft p-[10px] text-panel-copy transition-shadow duration-300",
+              "grid h-[190px] overflow-hidden rounded-[15px] rounded-br-none bg-soft p-[10px] text-panel-copy transition-shadow duration-300",
               activeId === record.id && "shadow-history-thumb",
             )}
           >
-            <button
-              className="grid h-full min-h-0 grid-rows-[minmax(0,1fr)_auto] pr-1 text-left"
+            <Button
+              className="grid h-full min-h-0 w-full grid-rows-[minmax(0,1fr)_auto] content-stretch justify-stretch gap-3 overflow-hidden whitespace-normal rounded-none pr-1 text-left font-normal hover:bg-transparent active:translate-y-0"
+              variant="ghost"
+              size="nav"
+              radius="none"
               type="button"
               onClick={() => onSelect(record.id)}
             >
-              <p className="min-h-0 overflow-x-hidden overflow-y-auto break-words pr-2 text-[11px] font-semibold leading-[1.26]">
+              <p className="prompt-copy-scrollbar h-full min-h-0 w-full overflow-x-hidden overflow-y-auto overscroll-contain whitespace-normal break-words [overflow-wrap:anywhere] pr-2 text-[11px] leading-[1.26]">
                 {record.prompt}
               </p>
-              <p className="mt-3 text-[9px] font-bold text-muted">
+              <p className="shrink-0 text-[9px] font-bold text-muted">
                 {record.mode === "image" ? "Image" : "Video"} / {record.style} / {record.createdAt}
               </p>
-            </button>
+            </Button>
           </div>
 
           <div className="grid min-w-0 grid-cols-2 gap-3 min-[821px]:grid-cols-3 min-[1181px]:grid-cols-4 min-[1181px]:gap-[13px]">
             {record.images.map((item, index) => (
-              <button
+              <Button
                 className="relative block aspect-[1/0.95] min-h-[145px] w-full overflow-hidden rounded-[7px] border-0 bg-soft shadow-media transition-[box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:shadow-media-hover active:translate-y-px min-[821px]:min-h-40"
+                variant="ghost"
+                size="nav"
+                radius="none"
                 type="button"
                 key={item.id}
                 aria-label={item.title}
@@ -115,7 +122,7 @@ export function PromptContextCard({
                     </span>
                   </span>
                 ) : null}
-              </button>
+              </Button>
             ))}
           </div>
         </article>

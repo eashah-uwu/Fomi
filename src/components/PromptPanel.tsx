@@ -71,38 +71,42 @@ export function PromptPanel({
         role="tablist"
         aria-label="Generation mode"
       >
-        <button
+        <Button
           className={cn(
-            "rounded-full px-3 text-[10px] font-bold transition-colors",
+            "h-full min-h-0 rounded-full px-3 text-[10px] font-bold transition-colors active:translate-y-0",
             mode === "image" ? "bg-soft-strong text-toggle-copy shadow-control" : "bg-transparent text-toggle-muted hover:bg-soft",
           )}
+          variant="ghost"
+          size="nav"
           type="button"
           role="tab"
           aria-selected={mode === "image"}
           onClick={() => onModeChange("image")}
         >
           Image
-        </button>
-        <button
+        </Button>
+        <Button
           className={cn(
-            "rounded-full px-3 text-[10px] font-bold transition-colors",
+            "h-full min-h-0 rounded-full px-3 text-[10px] font-bold transition-colors active:translate-y-0",
             mode === "video" ? "bg-soft-strong text-toggle-copy shadow-control" : "bg-transparent text-toggle-muted hover:bg-soft",
           )}
+          variant="ghost"
+          size="nav"
           type="button"
           role="tab"
           aria-selected={mode === "video"}
           onClick={() => onModeChange("video")}
         >
           Video
-        </button>
+        </Button>
       </div>
 
       <label className="sr-only" htmlFor="prompt-input">
         Describe the image to generate
       </label>
-      <div className="relative mb-5 min-h-[225px]">
+      <div className="relative mb-5 min-h-[225px] rounded-2xl border border-border bg-surface shadow-field transition-[border-color,box-shadow] focus-within:border-accent/50 focus-within:ring-4 focus-within:ring-accent/15">
         <textarea
-          className="min-h-[225px] w-full resize-none rounded-2xl border border-border bg-surface pb-[58px] pl-[13px] pr-1 pt-5 text-[11px] leading-[1.45] text-foreground shadow-field outline-none placeholder:text-placeholder focus:border-accent/50 focus:ring-4 focus:ring-accent/15"
+          className="prompt-input-scrollbar absolute inset-y-1.5 left-1.5 right-2.5 w-auto resize-none rounded-xl border-0 bg-transparent pb-[58px] pl-[7px] pr-2 pt-[14px] text-[11px] leading-[1.45] text-foreground outline-none placeholder:text-placeholder"
           id="prompt-input"
           value={prompt}
           onChange={(event) => onPromptChange(event.target.value)}

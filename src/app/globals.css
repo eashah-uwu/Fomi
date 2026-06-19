@@ -246,6 +246,49 @@ img {
   background: var(--accent);
 }
 
+.prompt-copy-scrollbar {
+  scrollbar-color: var(--accent) transparent;
+  scrollbar-width: thin;
+  scrollbar-gutter: stable;
+}
+
+.prompt-copy-scrollbar::-webkit-scrollbar {
+  width: 2px;
+}
+
+.prompt-copy-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.prompt-copy-scrollbar::-webkit-scrollbar-thumb {
+  min-height: 38px;
+  border-block: 7px solid transparent;
+  border-radius: 999px;
+  background: var(--accent);
+  background-clip: padding-box;
+}
+
+.prompt-input-scrollbar {
+  scrollbar-color: var(--accent) transparent;
+  scrollbar-width: thin;
+  scrollbar-gutter: stable;
+}
+
+.prompt-input-scrollbar::-webkit-scrollbar {
+  width: 3px;
+}
+
+.prompt-input-scrollbar::-webkit-scrollbar-track {
+  margin-block: 12px 54px;
+  background: transparent;
+}
+
+.prompt-input-scrollbar::-webkit-scrollbar-thumb {
+  min-height: 42px;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
 @keyframes skeleton-sheen {
   from {
     background-position: 180% 0;
