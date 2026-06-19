@@ -269,24 +269,11 @@ img {
 }
 
 .prompt-input-scrollbar {
-  scrollbar-color: var(--accent) transparent;
-  scrollbar-width: thin;
-  scrollbar-gutter: stable;
+  scrollbar-width: none;
 }
 
 .prompt-input-scrollbar::-webkit-scrollbar {
-  width: 3px;
-}
-
-.prompt-input-scrollbar::-webkit-scrollbar-track {
-  margin-block: 12px 54px;
-  background: transparent;
-}
-
-.prompt-input-scrollbar::-webkit-scrollbar-thumb {
-  min-height: 42px;
-  border-radius: 999px;
-  background: var(--accent);
+  display: none;
 }
 
 @keyframes skeleton-sheen {

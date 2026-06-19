@@ -11,9 +11,14 @@ function Popover({
   return <PopoverPrimitive.Root data-slot="popover" {...props} />
 }
 
+type PopoverTriggerProps = React.ComponentProps<typeof PopoverPrimitive.Trigger> & {
+  children?: React.ReactNode
+  asChild?: boolean
+}
+
 function PopoverTrigger({
   ...props
-}: React.ComponentProps<typeof PopoverPrimitive.Trigger>) {
+}: PopoverTriggerProps) {
   return <PopoverPrimitive.Trigger data-slot="popover-trigger" {...props} />
 }
 
