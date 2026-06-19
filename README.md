@@ -163,6 +163,13 @@ The assignment asked for the implementation to match the design closely. In addi
 - UI primitives are reusable across dropdowns, popovers, selects, and buttons.
 - The interface is structured to feel closer to a real creative tool instead of a static mockup.
 
+## Bonus Reference 
+- <img width="1898" height="844" alt="image" src="https://github.com/user-attachments/assets/50ec6321-33bd-4fba-b6e8-565037d94fc9" />
+
+## Bonus Reference Implementation
+
+
+
 ## Author
 
 **Eashah Emaan**
