@@ -199,7 +199,7 @@ export function GenerationWorkbench() {
       />
 
       <section
-        className="grid grid-cols-1 items-start gap-7 px-4 pb-8 min-[821px]:grid-cols-[286px_minmax(0,1fr)] min-[821px]:gap-[18px] min-[821px]:px-3.5 min-[1181px]:gap-6 min-[1181px]:pb-[38px] min-[1181px]:pl-[38px] min-[1181px]:pr-[27px]"
+        className="grid min-w-0 grid-cols-1 items-start gap-6 px-3 pb-8 sm:px-4 md:gap-7 lg:grid-cols-[286px_minmax(0,1fr)] lg:gap-[18px] lg:px-5 xl:gap-6 xl:pb-[38px] xl:pl-[38px] xl:pr-[27px]"
         aria-label="AI content generator"
       >
         <PromptPanel

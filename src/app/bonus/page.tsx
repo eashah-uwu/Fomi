@@ -141,15 +141,15 @@ export default function BonusPage() {
   };
 
   return (
-    <main className="bonus-page min-h-[100dvh] bg-[#f8f1ed] p-3 text-[#11110f] min-[700px]:p-4 min-[1280px]:h-[100dvh] min-[1280px]:min-h-0 min-[1280px]:overflow-hidden">
-      <div className="mx-auto grid min-h-[calc(100dvh-24px)] max-w-[1920px] gap-4 min-[700px]:min-h-[calc(100dvh-32px)] min-[1280px]:h-full min-[1280px]:min-h-0 min-[1280px]:grid-cols-[330px_minmax(580px,1fr)_430px] min-[1280px]:grid-rows-[178px_minmax(0,1fr)]">
-        <aside className="bonus-panel flex min-w-0 flex-col overflow-hidden px-6 py-8 min-[700px]:px-7 min-[1280px]:row-span-2 min-[1280px]:min-h-0 min-[1280px]:px-6 min-[1280px]:pb-4 min-[1280px]:pt-4">
+    <main className="bonus-page min-h-[100dvh] overflow-x-hidden bg-[#f8f1ed] p-2 text-[#11110f] sm:p-3 md:p-4 xl:h-[100dvh] xl:min-h-0 xl:overflow-hidden">
+      <div className="mx-auto grid min-h-[calc(100dvh-16px)] min-w-0 max-w-[1920px] grid-cols-1 gap-3 sm:min-h-[calc(100dvh-24px)] md:min-h-[calc(100dvh-32px)] md:grid-cols-[300px_minmax(0,1fr)] md:gap-4 lg:grid-cols-[320px_minmax(0,1fr)] xl:h-full xl:min-h-0 xl:grid-cols-[330px_minmax(580px,1fr)_430px] xl:grid-rows-[178px_minmax(0,1fr)]">
+        <aside className="bonus-panel flex min-w-0 flex-col overflow-hidden px-4 py-5 sm:px-6 sm:py-6 md:row-span-2 md:min-h-0 md:px-5 md:py-5 lg:px-6 xl:row-span-2 xl:pb-4 xl:pt-4">
           <div className="flex items-center gap-2">
             <span className="text-[30px] font-black tracking-[-0.07em]">FOMI</span>
             <Sparkles className="size-5 fill-[#e56e4d] text-[#e56e4d]" strokeWidth={1.6} />
           </div>
 
-          <h1 className="mt-10 max-w-[250px] text-[25px] font-black leading-[1.17] tracking-[-0.04em] min-[1280px]:mt-5">
+          <h1 className="mt-6 max-w-[250px] text-[23px] font-black leading-[1.17] tracking-[-0.04em] sm:mt-8 sm:text-[25px] md:mt-5">
             Make the image you can’t stop <span className="text-[#e56e4d]">thinking about.</span>
           </h1>
 
@@ -190,7 +190,7 @@ export default function BonusPage() {
             value={mode}
             onValueChange={(value) => setMode(value as "Image" | "Video")}
           >
-            <TabsList className="grid h-[48px] w-full grid-cols-2 rounded-[13px] bg-white p-[5px] shadow-[0_5px_24px_rgba(83,48,34,0.06)]">
+            <TabsList className="grid h-11 w-full grid-cols-2 rounded-[13px] bg-white p-1 shadow-[0_5px_24px_rgba(83,48,34,0.06)] sm:h-[48px] sm:p-[5px]">
               {(["Image", "Video"] as const).map((item) => (
                 <TabsTrigger
                   key={item}
@@ -204,7 +204,7 @@ export default function BonusPage() {
           </Tabs>
 
           <div className="mt-2 rounded-[24px] bg-[#eaded7] p-[5px] shadow-[inset_0_1px_0_rgba(255,255,255,0.7)]">
-            <div className="relative h-[320px] rounded-[20px] bg-white shadow-[inset_0_0_0_1px_rgba(60,45,38,0.18)] min-[1280px]:h-[clamp(155px,17.5vh,185px)]">
+            <div className="relative h-[250px] rounded-[20px] bg-white shadow-[inset_0_0_0_1px_rgba(60,45,38,0.18)] sm:h-[290px] md:h-[clamp(190px,24vh,250px)] xl:h-[clamp(155px,17.5vh,185px)]">
               <textarea
                 className="bonus-scrollbar absolute inset-0 h-full w-full resize-none rounded-[20px] bg-transparent px-4 pb-14 pt-5 text-[12px] leading-[1.65] outline-none"
                 maxLength={1000}
@@ -219,7 +219,7 @@ export default function BonusPage() {
             </div>
           </div>
 
-          <div className="mt-2 grid grid-cols-[1.08fr_.78fr_1fr] gap-2">
+          <div className="mt-2 grid min-w-0 grid-cols-[minmax(0,1.08fr)_minmax(0,.78fr)_minmax(0,1fr)] gap-1.5 sm:gap-2">
             <BonusSelect label="Image count" value="4 images" values={["1 image", "2 images", "4 images"]} />
             <BonusSelect label="Aspect ratio" value="1:1" values={["1:1", "4:5", "16:9"]} />
             <BonusSelect label="Model" value="Real" values={["Real", "Art", "Motion"]} />
@@ -261,7 +261,7 @@ export default function BonusPage() {
             {isGenerating ? "Creating" : "Generate"}
           </Button>
 
-          <div className="mt-auto flex min-h-8 shrink-0 items-end gap-3 pt-3">
+          <div className="mt-4 flex min-h-8 shrink-0 items-end gap-3 pt-1 md:mt-auto md:pt-3">
             <span className="grid size-8 place-items-center rounded-full bg-[#191919] text-[12px] text-white">N</span>
             <div className="flex items-center rounded-full bg-white p-0.5 shadow-[0_5px_18px_rgba(83,48,34,0.07)]">
               <Button type="button" variant="ghost" size="icon" className="size-6 text-[#e56e4d]">
@@ -274,7 +274,7 @@ export default function BonusPage() {
           </div>
         </aside>
 
-        <section className="bonus-panel min-w-0 px-5 py-4 min-[700px]:px-6 min-[1280px]:col-span-2 min-[1280px]:col-start-2">
+        <section className="bonus-panel min-w-0 px-4 py-4 sm:px-5 md:col-start-2 md:px-5 lg:px-6 xl:col-span-2 xl:col-start-2">
           <div className="mb-3 flex items-center gap-3">
             <div className="flex items-center gap-3">
               <h2 className="text-[14px] font-bold">History</h2>
@@ -285,7 +285,7 @@ export default function BonusPage() {
               </span>
             </div>
           </div>
-          <div className="bonus-history-scroll flex items-center gap-4 overflow-x-auto p-1">
+          <div className="bonus-history-scroll flex min-w-0 items-center gap-2.5 overflow-x-auto p-1 sm:gap-3 xl:gap-4">
             {historyItems.map(([label, imageId], index) => (
               <Button
                 key={label}
@@ -294,7 +294,7 @@ export default function BonusPage() {
                 size="nav"
                 radius="none"
                 aria-label={`Open ${label}`}
-                className="relative size-[78px] min-h-0 shrink-0 overflow-hidden rounded-[8px] p-0 ring-1 ring-black/[0.03] active:translate-y-0 min-[1500px]:size-[82px]"
+                className="relative size-16 min-h-0 shrink-0 overflow-hidden rounded-[8px] p-0 ring-1 ring-black/[0.03] active:translate-y-0 sm:size-[70px] xl:size-[78px] min-[1500px]:size-[82px]"
                 onClick={() => {
                   setSelectedHistory(index);
                   setHeroImage(imageUrl(imageId, 1100, 1400));
@@ -313,7 +313,7 @@ export default function BonusPage() {
               type="button"
               variant="ghost"
               size="icon"
-              className="ml-auto size-10 shrink-0 bg-[#fff2ec] text-[#d76545] hover:bg-[#fde8df]"
+              className="ml-auto size-9 shrink-0 bg-[#fff2ec] text-[#d76545] hover:bg-[#fde8df] sm:size-10"
               aria-label="Next history items"
             >
               <ChevronRight className="size-5" strokeWidth={1.5} />
@@ -321,17 +321,17 @@ export default function BonusPage() {
           </div>
         </section>
 
-        <section className="min-w-0 rounded-[28px] bg-white/70 p-[5px] shadow-[0_18px_60px_rgba(91,53,38,0.06),inset_0_0_0_1px_rgba(255,255,255,0.9)] min-[1280px]:col-start-2 min-[1280px]:row-start-2 min-[1280px]:min-h-0">
-          <div className="flex h-full min-h-[700px] flex-col rounded-[24px] bg-[#fffdfc] p-5 shadow-[inset_0_0_0_1px_rgba(220,190,178,0.44)] min-[1280px]:min-h-0">
-            <div className="grid min-h-0 flex-1 gap-3 min-[700px]:grid-cols-[minmax(0,2.65fr)_minmax(165px,1fr)]">
-              <div className="group relative min-h-[540px] overflow-hidden rounded-[11px] bg-[#ece4df] min-[1280px]:min-h-0">
+        <section className="min-w-0 rounded-[22px] bg-white/70 p-1 shadow-[0_18px_60px_rgba(91,53,38,0.06),inset_0_0_0_1px_rgba(255,255,255,0.9)] sm:rounded-[28px] sm:p-[5px] md:col-start-2 md:row-start-2 md:min-h-0 xl:col-start-2 xl:row-start-2">
+          <div className="flex h-full min-h-0 flex-col rounded-[19px] bg-[#fffdfc] p-3 shadow-[inset_0_0_0_1px_rgba(220,190,178,0.44)] sm:rounded-[24px] sm:p-4 lg:p-5">
+            <div className="grid min-h-0 flex-1 grid-cols-1 gap-2.5 sm:gap-3 md:grid-cols-[minmax(0,2.25fr)_minmax(130px,.9fr)] xl:grid-cols-[minmax(0,2.65fr)_minmax(165px,1fr)]">
+              <div className="group relative aspect-[4/5] min-h-0 overflow-hidden rounded-[11px] bg-[#ece4df] sm:aspect-[4/3] md:aspect-auto md:min-h-[470px] xl:min-h-0">
                 <Image
                   key={heroImage}
                   src={heroImage}
                   alt="Selected generated portrait"
                   fill
                   priority
-                  sizes="(max-width: 699px) 92vw, (max-width: 1279px) 65vw, 46vw"
+                  sizes="(max-width: 639px) 94vw, (max-width: 767px) 90vw, (max-width: 1279px) 62vw, 46vw"
                   className="animate-[bonus-fade_.55s_cubic-bezier(.32,.72,0,1)]"
                 />
                 <div className="absolute left-0 top-1/2 grid -translate-y-1/2 overflow-hidden rounded-r-xl bg-white/90 shadow-[0_12px_30px_rgba(48,31,24,0.12)]">
@@ -350,7 +350,7 @@ export default function BonusPage() {
                 </div>
               </div>
 
-              <div className="grid min-h-[540px] grid-cols-3 gap-3 min-[700px]:grid-cols-1 min-[700px]:grid-rows-3 min-[1280px]:min-h-0">
+              <div className="grid min-h-0 grid-cols-3 gap-2.5 sm:gap-3 md:grid-cols-1 md:grid-rows-3">
                 {portraitImages.slice(1).map((src, index) => (
                   <Button
                     key={src}
@@ -358,7 +358,7 @@ export default function BonusPage() {
                     variant="ghost"
                     size="nav"
                     radius="none"
-                    className="relative min-h-[170px] overflow-hidden rounded-[11px] p-0 active:translate-y-0 min-[1280px]:min-h-0"
+                    className="relative aspect-square min-h-0 overflow-hidden rounded-[11px] p-0 active:translate-y-0 md:aspect-auto"
                     onClick={() => setHeroImage(src)}
                     aria-label={`Select portrait variation ${index + 2}`}
                   >
@@ -368,7 +368,7 @@ export default function BonusPage() {
               </div>
             </div>
 
-            <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 rounded-[14px] bg-white px-6 py-5 text-[11px] shadow-[inset_0_0_0_1px_rgba(218,197,187,0.42)]">
+            <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 rounded-[14px] bg-white px-4 py-3 text-[10px] shadow-[inset_0_0_0_1px_rgba(218,197,187,0.42)] sm:mt-4 sm:gap-x-5 sm:px-5 sm:py-4 sm:text-[11px] lg:mt-6 lg:px-6 lg:py-5">
               <span className="rounded-lg bg-[#fff0e9] px-3 py-1.5 font-medium text-[#d75e3c]">Real</span>
               <span>1:1</span>
               <span>•</span>
@@ -379,12 +379,12 @@ export default function BonusPage() {
           </div>
         </section>
 
-        <aside className="bonus-panel flex min-w-0 flex-col overflow-hidden p-4 min-[1280px]:col-start-3 min-[1280px]:row-start-2 min-[1280px]:min-h-0">
-          <div className="bonus-timeline-scroll min-h-0 flex-1 overflow-y-auto pl-3 pr-1">
+        <aside className="bonus-panel flex min-w-0 flex-col overflow-hidden p-3 sm:p-4 md:col-span-2 xl:col-span-1 xl:col-start-3 xl:row-start-2 xl:min-h-0">
+          <div className="bonus-timeline-scroll min-h-0 flex-1 overflow-visible pl-2 pr-0 sm:pl-3 xl:overflow-y-auto xl:pr-1">
             {displayedTimeline.map((item, index) => (
               <article
                 key={`${item.time}-${index}`}
-                className={`relative grid min-h-[185px] cursor-pointer grid-cols-[minmax(0,.9fr)_minmax(150px,1.22fr)] gap-4 rounded-[18px] px-4 py-3 outline-none transition-[background,box-shadow,transform] duration-300 [transition-timing-function:cubic-bezier(.32,.72,0,1)] focus-visible:ring-2 focus-visible:ring-[#e56e4d]/30 ${
+                className={`relative grid min-h-0 cursor-pointer grid-cols-1 gap-3 rounded-[16px] px-3 py-4 outline-none transition-[background,box-shadow,transform] duration-300 [transition-timing-function:cubic-bezier(.32,.72,0,1)] focus-visible:ring-2 focus-visible:ring-[#e56e4d]/30 sm:grid-cols-[minmax(0,.9fr)_minmax(180px,1.22fr)] sm:gap-4 sm:rounded-[18px] sm:px-4 sm:py-3 md:min-h-[170px] xl:min-h-[185px] xl:grid-cols-[minmax(0,.9fr)_minmax(150px,1.22fr)] ${
                   selectedTimeline === index
                     ? "bg-[#fbebe4] shadow-[inset_0_0_0_1px_rgba(229,110,77,0.10)]"
                     : "hover:bg-[#fff8f5]"
@@ -420,7 +420,7 @@ export default function BonusPage() {
                     <time className="whitespace-nowrap text-[#554e4a]">{item.time}</time>
                   </div>
                 </div>
-                <div className="grid grid-cols-2 gap-1.5">
+                <div className="grid grid-cols-4 gap-1.5 sm:grid-cols-2">
                   {item.images.map((src, imageIndex) => (
                     <Button
                       key={`${src}-${imageIndex}`}
@@ -428,7 +428,7 @@ export default function BonusPage() {
                       variant="ghost"
                       size="nav"
                       radius="none"
-                      className="relative min-h-[72px] overflow-hidden rounded-[7px] p-0 active:translate-y-0"
+                      className="relative aspect-square min-h-0 overflow-hidden rounded-[7px] p-0 active:translate-y-0 sm:aspect-auto sm:min-h-[72px]"
                       onClick={(event) => {
                         event.stopPropagation();
                         setSelectedTimeline(index);
@@ -447,7 +447,7 @@ export default function BonusPage() {
             type="button"
             variant="white"
             radius="md"
-            className="mt-3 h-[50px] w-full justify-center gap-16 rounded-[14px] text-[11px] font-medium shadow-[inset_0_0_0_1px_rgba(218,197,187,0.42)]"
+            className="mt-3 h-11 w-full justify-center gap-10 rounded-[14px] text-[11px] font-medium shadow-[inset_0_0_0_1px_rgba(218,197,187,0.42)] sm:h-[50px] sm:gap-16"
             onClick={() => setShowExtra((value) => !value)}
           >
             {showExtra ? "Show less" : "Load more"}
@@ -506,6 +506,12 @@ export default function BonusPage() {
           }
         }
 
+        @media (max-width: 639px) {
+          .bonus-panel {
+            border-radius: 18px;
+          }
+        }
+
         @media (prefers-reduced-motion: reduce) {
           .bonus-page *,
           .bonus-page *::before,
@@ -534,7 +540,7 @@ function BonusSelect({
     <Select defaultValue={value}>
       <SelectTrigger
         aria-label={label}
-        className="h-[44px] min-w-0 rounded-[13px] border-0 bg-white px-3 text-[11px] font-medium shadow-[0_5px_20px_rgba(83,48,34,0.05)]"
+        className="h-10 w-full min-w-0 rounded-[12px] border-0 bg-white px-2 text-[10px] font-medium shadow-[0_5px_20px_rgba(83,48,34,0.05)] sm:h-[44px] sm:rounded-[13px] sm:px-3 sm:text-[11px]"
       >
         <SelectValue />
       </SelectTrigger>

@@ -63,7 +63,7 @@ export function PromptPanel({
 
   return (
     <aside
-      className="rounded-[17px] border border-accent/10 bg-soft p-[17px] shadow-panel-inset min-[821px]:min-h-[500px]"
+      className="w-full min-w-0 rounded-[17px] border border-accent/10 bg-soft p-4 shadow-panel-inset sm:p-[17px] lg:min-h-[500px]"
       aria-label="Generation controls"
     >
       <div
@@ -125,14 +125,14 @@ export function PromptPanel({
         </Button>
       </div>
 
-      <div className="mb-5 grid grid-cols-[88px_64px_minmax(84px,1fr)] gap-1" aria-label="Generation settings">
+      <div className="mb-5 grid min-w-0 grid-cols-[minmax(0,1.15fr)_minmax(0,.8fr)_minmax(0,1fr)] gap-1.5" aria-label="Generation settings">
         <Select
           open={activeDropdown === "count"}
           value={settings.count}
           onOpenChange={handleOpenChange("count")}
           onValueChange={(count) => onSettingsChange({ count })}
         >
-          <SelectTrigger className="text-xs text-center" aria-label={mode === "image" ? "Number of images" : "Number of videos"}>
+          <SelectTrigger className="w-full min-w-0 px-2 text-center text-[11px] sm:text-xs" aria-label={mode === "image" ? "Number of images" : "Number of videos"}>
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -147,7 +147,7 @@ export function PromptPanel({
           onOpenChange={handleOpenChange("ratio")}
           onValueChange={(ratio) => onSettingsChange({ ratio })}
         >
-          <SelectTrigger className="text-xs text-center" aria-label="Aspect ratio">
+          <SelectTrigger className="w-full min-w-0 px-2 text-center text-[11px] sm:text-xs" aria-label="Aspect ratio">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -162,7 +162,7 @@ export function PromptPanel({
           onOpenChange={handleOpenChange("model")}
           onValueChange={(model) => onSettingsChange({ model })}
         >
-          <SelectTrigger className="min-w-0 text-xs text-center" aria-label="Model">
+          <SelectTrigger className="w-full min-w-0 px-2 text-center text-[11px] sm:text-xs" aria-label="Model">
             <SelectValue>{settings.model.replace("Fomi ", "")}</SelectValue>
           </SelectTrigger>
           <SelectContent>
