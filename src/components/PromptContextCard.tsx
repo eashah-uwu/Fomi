@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { Play } from "lucide-react";
 import { useEffect, useRef } from "react";
-import { Button } from "@/components/ui/button";
 import type { MediaItem } from "@/data/media";
 import { cn } from "@/lib/utils";
 
@@ -63,45 +62,39 @@ export function PromptContextCard({
   return (
     <section
       ref={timelineRef}
-      className="grid min-w-0 content-start gap-8 md:gap-10 lg:h-[500px] lg:overflow-y-auto lg:pr-2"
+      className="grid min-w-0 content-start gap-10 min-[821px]:h-[500px] min-[821px]:overflow-y-auto min-[821px]:pr-2"
       aria-label="Prompt results history"
     >
       {records.map((record, recordIndex) => (
         <article
           ref={recordIndex === records.length - 1 ? latestRecordRef : undefined}
-          className="grid min-w-0 items-start gap-4 md:grid-cols-[200px_minmax(0,1fr)] md:gap-5 xl:grid-cols-[220px_minmax(0,1fr)] xl:gap-4"
+          className="grid min-w-0 items-start gap-5 min-[1181px]:grid-cols-[220px_minmax(0,1fr)] min-[1181px]:gap-4"
           key={record.id}
         >
           <div
             className={cn(
-              "grid h-[190px] overflow-hidden rounded-[15px] rounded-br-none bg-soft p-[10px] text-panel-copy transition-shadow duration-300",
+              "grid h-[190px] content-between rounded-[15px] rounded-br-none bg-soft p-[10px] text-panel-copy transition-shadow duration-300",
               activeId === record.id && "shadow-history-thumb",
             )}
           >
-            <Button
-              className="grid h-full min-h-0 w-full grid-rows-[minmax(0,1fr)_auto] content-stretch justify-stretch gap-3 overflow-hidden whitespace-normal rounded-none pr-1 text-left font-normal hover:bg-transparent active:translate-y-0"
-              variant="ghost"
-              size="nav"
-              radius="none"
+            <button
+              className="grid h-full min-h-0 grid-rows-[minmax(0,1fr)_auto] pr-1 text-left"
               type="button"
               onClick={() => onSelect(record.id)}
             >
-              <p className="prompt-copy-scrollbar h-full min-h-0 w-full overflow-x-hidden overflow-y-auto overscroll-contain whitespace-normal break-words [overflow-wrap:anywhere] pr-2 text-[11px] leading-[1.26]">
+              <p className="min-h-0 overflow-x-hidden overflow-y-auto break-words pr-2 text-[11px] leading-[1.26]">
                 {record.prompt}
               </p>
-              <p className="shrink-0 text-[9px] font-bold text-muted">
+              <p className="mt-3 text-[9px] font-bold text-muted">
                 {record.mode === "image" ? "Image" : "Video"} / {record.style} / {record.createdAt}
               </p>
-            </Button>
+            </button>
           </div>
 
-          <div className="grid min-w-0 grid-cols-2 gap-2.5 sm:gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-[13px]">
+          <div className="grid min-w-0 grid-cols-2 gap-3 min-[821px]:grid-cols-3 min-[1181px]:grid-cols-4 min-[1181px]:gap-[13px]">
             {record.images.map((item, index) => (
-              <Button
-                className="relative block aspect-square min-h-0 w-full overflow-hidden rounded-[7px] border-0 bg-soft shadow-media transition-[box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:shadow-media-hover active:translate-y-px sm:aspect-[1/0.95] lg:min-h-36 xl:min-h-40"
-                variant="ghost"
-                size="nav"
-                radius="none"
+              <button
+                className="relative block aspect-[1/0.95] min-h-[145px] w-full overflow-hidden rounded-[7px] border-0 bg-soft shadow-media transition-[box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:shadow-media-hover active:translate-y-px min-[821px]:min-h-40"
                 type="button"
                 key={item.id}
                 aria-label={item.title}
@@ -122,24 +115,24 @@ export function PromptContextCard({
                     </span>
                   </span>
                 ) : null}
-              </Button>
+              </button>
             ))}
           </div>
         </article>
       ))}
 
       {isLoading ? (
-        <article className="grid min-w-0 items-start gap-4 md:grid-cols-[200px_minmax(0,1fr)] md:gap-5 xl:grid-cols-[220px_minmax(0,1fr)] xl:gap-4">
+        <article className="grid min-w-0 items-start gap-5 min-[1181px]:grid-cols-[220px_minmax(0,1fr)] min-[1181px]:gap-4">
           <div className="h-[190px] rounded-[15px] rounded-br-none bg-soft p-[10px] text-panel-copy">
             <p className="max-h-[104px] overflow-hidden text-[11px] font-semibold leading-[1.26]">{pendingPrompt}</p>
             <p className="mt-2 text-[9px] font-bold text-muted">
               {pendingMode === "image" ? "Image" : "Video"} / Creating
             </p>
           </div>
-          <div className="grid min-w-0 grid-cols-2 gap-2.5 sm:gap-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-[13px]">
+          <div className="grid min-w-0 grid-cols-2 gap-3 min-[821px]:grid-cols-3 min-[1181px]:grid-cols-4 min-[1181px]:gap-[13px]">
             {Array.from({ length: pendingCount }).map((_, index) => (
               <div
-                className="aspect-square min-h-0 animate-[skeleton-sheen_1s_ease-in-out_infinite] rounded-[7px] bg-soft-skeleton bg-[image:var(--skeleton-background)] bg-[length:220%_100%] sm:aspect-[1/0.95] lg:min-h-36 xl:min-h-40"
+                className="aspect-[1/0.95] min-h-[145px] animate-[skeleton-sheen_1s_ease-in-out_infinite] rounded-[7px] bg-soft-skeleton bg-[image:var(--skeleton-background)] bg-[length:220%_100%] min-[821px]:min-h-40"
                 key={`pending-${index}`}
                 aria-hidden="true"
               />

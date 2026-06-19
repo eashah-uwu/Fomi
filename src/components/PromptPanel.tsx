@@ -63,7 +63,7 @@ export function PromptPanel({
 
   return (
     <aside
-      className="w-full min-w-0 rounded-[17px] border border-accent/10 bg-soft p-4 shadow-panel-inset sm:p-[17px] lg:min-h-[500px]"
+      className="min-h-[451px] rounded-[17px] border border-accent/10 bg-soft p-[15px] shadow-panel-inset md:min-h-0 lg:min-h-[451px]"
       aria-label="Generation controls"
     >
       <div
@@ -71,42 +71,38 @@ export function PromptPanel({
         role="tablist"
         aria-label="Generation mode"
       >
-        <Button
+        <button
           className={cn(
-            "h-full min-h-0 rounded-full px-3 text-[10px] font-bold transition-colors active:translate-y-0",
+            "rounded-full px-3 text-[10px] font-bold transition-colors",
             mode === "image" ? "bg-soft-strong text-toggle-copy shadow-control" : "bg-transparent text-toggle-muted hover:bg-soft",
           )}
-          variant="ghost"
-          size="nav"
           type="button"
           role="tab"
           aria-selected={mode === "image"}
           onClick={() => onModeChange("image")}
         >
           Image
-        </Button>
-        <Button
+        </button>
+        <button
           className={cn(
-            "h-full min-h-0 rounded-full px-3 text-[10px] font-bold transition-colors active:translate-y-0",
+            "rounded-full px-3 text-[10px] font-bold transition-colors",
             mode === "video" ? "bg-soft-strong text-toggle-copy shadow-control" : "bg-transparent text-toggle-muted hover:bg-soft",
           )}
-          variant="ghost"
-          size="nav"
           type="button"
           role="tab"
           aria-selected={mode === "video"}
           onClick={() => onModeChange("video")}
         >
           Video
-        </Button>
+        </button>
       </div>
 
       <label className="sr-only" htmlFor="prompt-input">
         Describe the image to generate
       </label>
-      <div className="relative mb-5 min-h-[225px] rounded-2xl border border-border bg-surface shadow-field transition-[border-color,box-shadow] focus-within:border-accent/50 focus-within:ring-4 focus-within:ring-accent/15">
+      <div className="relative mb-4 min-h-[170px]">
         <textarea
-          className="prompt-input-scrollbar absolute inset-y-1.5 left-1.5 right-2.5 w-auto resize-none rounded-xl border-0 bg-transparent pb-[58px] pl-[7px] pr-2 pt-[14px] text-[11px] leading-[1.45] text-foreground outline-none placeholder:text-placeholder"
+          className="min-h-[170px] w-full resize-none rounded-2xl border-[1.5px] border-input-border bg-surface px-[11px] pb-[58px] pt-5 text-[11px] font-semibold leading-[1.45] text-foreground shadow-field outline-none placeholder:text-placeholder focus:border-accent focus:ring-4 focus:ring-accent/15"
           id="prompt-input"
           value={prompt}
           onChange={(event) => onPromptChange(event.target.value)}
@@ -125,14 +121,14 @@ export function PromptPanel({
         </Button>
       </div>
 
-      <div className="mb-5 grid min-w-0 grid-cols-[minmax(0,1.15fr)_minmax(0,.8fr)_minmax(0,1fr)] gap-1.5" aria-label="Generation settings">
+      <div className="mb-4 grid grid-cols-[78px_58px_minmax(78px,1fr)] gap-[3px]" aria-label="Generation settings">
         <Select
           open={activeDropdown === "count"}
           value={settings.count}
           onOpenChange={handleOpenChange("count")}
           onValueChange={(count) => onSettingsChange({ count })}
         >
-          <SelectTrigger className="w-full min-w-0 px-2 text-center text-[11px] sm:text-xs" aria-label={mode === "image" ? "Number of images" : "Number of videos"}>
+          <SelectTrigger className="text-xs text-center" aria-label={mode === "image" ? "Number of images" : "Number of videos"}>
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -147,7 +143,7 @@ export function PromptPanel({
           onOpenChange={handleOpenChange("ratio")}
           onValueChange={(ratio) => onSettingsChange({ ratio })}
         >
-          <SelectTrigger className="w-full min-w-0 px-2 text-center text-[11px] sm:text-xs" aria-label="Aspect ratio">
+          <SelectTrigger className="text-xs text-center" aria-label="Aspect ratio">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -162,7 +158,7 @@ export function PromptPanel({
           onOpenChange={handleOpenChange("model")}
           onValueChange={(model) => onSettingsChange({ model })}
         >
-          <SelectTrigger className="w-full min-w-0 px-2 text-center text-[11px] sm:text-xs" aria-label="Model">
+          <SelectTrigger className="min-w-0 text-xs" aria-label="Model">
             <SelectValue>{settings.model.replace("Fomi ", "")}</SelectValue>
           </SelectTrigger>
           <SelectContent>
@@ -181,7 +177,7 @@ export function PromptPanel({
         >
           <DropdownMenuTrigger asChild>
             <Button
-              className="h-[33px] w-full justify-center gap-[53px] text-sm font-normal"
+              className="h-[33px] w-full justify-center gap-[53px] text-sm "
               variant="white"
               size="pill"
               type="button"
@@ -232,7 +228,7 @@ export function PromptPanel({
         >
           <DropdownMenuTrigger asChild>
             <Button
-              className="h-[33px] w-full justify-center gap-[53px] text-sm font-normal"
+              className="h-[33px] w-full justify-center gap-[53px] text-sm font-semibold"
               variant="white"
               size="pill"
               type="button"

@@ -141,10 +141,9 @@ export default function BonusPage() {
   };
 
   return (
-    <main className="bonus-page min-h-[100dvh] overflow-x-hidden bg-[#f8f1ed] p-2 text-[#11110f] sm:p-3 md:p-4 xl:h-[100dvh] xl:min-h-0 xl:overflow-hidden">
-      <div className="mx-auto grid min-h-[calc(100dvh-16px)] min-w-0 max-w-[1920px] grid-cols-1 gap-3 sm:min-h-[calc(100dvh-24px)] md:min-h-[calc(100dvh-32px)] md:grid-cols-[300px_minmax(0,1fr)] md:gap-4 lg:grid-cols-[320px_minmax(0,1fr)] xl:h-full xl:min-h-0 xl:grid-cols-[330px_minmax(580px,1fr)_430px] xl:grid-rows-[178px_minmax(0,1fr)]">
-        <aside className="bonus-panel flex min-w-0 flex-col overflow-hidden px-4 py-5 sm:px-6 sm:py-6 md:row-span-2 md:min-h-0 md:px-5 md:py-5 lg:px-6 xl:row-span-2 xl:pb-4 xl:pt-4">
-          <div className="flex items-center gap-2">
+<main className="bonus-page min-h-[100dvh] overflow-x-clip bg-[#f8f1ed] p-2 text-[#11110f] sm:p-3 md:p-4 xl:min-h-[100dvh]">    
+<div className="mx-auto grid min-h-[calc(100dvh-16px)] min-w-0 max-w-[1920px] grid-cols-1 gap-3 sm:min-h-[calc(100dvh-24px)] md:min-h-[calc(100dvh-32px)] md:grid-cols-[300px_minmax(0,1fr)] md:gap-4 lg:grid-cols-[320px_minmax(0,1fr)] xl:grid-cols-[minmax(280px,320px)_minmax(0,1fr)_minmax(300px,380px)] xl:grid-rows-[178px_minmax(0,1fr)]">
+  <aside className="bonus-panel flex min-w-0 flex-col overflow-x-hidden overflow-y-auto px-4 py-5 sm:px-6 sm:py-6 md:row-span-2 md:max-h-[calc(100dvh-32px)] md:min-h-0 md:px-5 md:py-5 lg:px-6 xl:row-span-2 xl:pb-4 xl:pt-4">          <div className="flex items-center gap-2">
             <span className="text-[30px] font-black tracking-[-0.07em]">FOMI</span>
             <Sparkles className="size-5 fill-[#e56e4d] text-[#e56e4d]" strokeWidth={1.6} />
           </div>
@@ -379,9 +378,9 @@ export default function BonusPage() {
           </div>
         </section>
 
-        <aside className="bonus-panel flex min-w-0 flex-col overflow-hidden p-3 sm:p-4 md:col-span-2 xl:col-span-1 xl:col-start-3 xl:row-start-2 xl:min-h-0">
-          <div className="bonus-timeline-scroll min-h-0 flex-1 overflow-visible pl-2 pr-0 sm:pl-3 xl:overflow-y-auto xl:pr-1">
-            {displayedTimeline.map((item, index) => (
+<aside className="bonus-panel flex min-w-0 flex-col overflow-x-hidden overflow-y-auto p-3 sm:p-4 md:col-span-2 xl:col-span-1 xl:col-start-3 xl:row-start-2 xl:min-h-0 xl:max-h-[calc(100dvh-226px)]"> 
+<div className="bonus-timeline-scroll min-h-0 flex-1 overflow-visible pl-2 pr-0 sm:pl-3 xl:overflow-y-auto xl:overflow-x-hidden xl:pr-1">
+              {displayedTimeline.map((item, index) => (
               <article
                 key={`${item.time}-${index}`}
                 className={`relative grid min-h-0 cursor-pointer grid-cols-1 gap-3 rounded-[16px] px-3 py-4 outline-none transition-[background,box-shadow,transform] duration-300 [transition-timing-function:cubic-bezier(.32,.72,0,1)] focus-visible:ring-2 focus-visible:ring-[#e56e4d]/30 sm:grid-cols-[minmax(0,.9fr)_minmax(180px,1.22fr)] sm:gap-4 sm:rounded-[18px] sm:px-4 sm:py-3 md:min-h-[170px] xl:min-h-[185px] xl:grid-cols-[minmax(0,.9fr)_minmax(150px,1.22fr)] ${

@@ -49,7 +49,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       return <Slot.Root className={classes} ref={ref} {...props} />;
     }
 
-    return <button className={classes} ref={ref} {...props} />;
+    return React.createElement("button", {
+      ...props,
+      className: classes,
+      ref,
+    });
   },
 );
 Button.displayName = "Button";
