@@ -246,33 +246,39 @@ img {
   background: var(--accent);
 }
 
+
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+
+
 .prompt-copy-scrollbar {
-  scrollbar-color: var(--accent) transparent;
-  scrollbar-width: thin;
-  scrollbar-gutter: stable;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .prompt-copy-scrollbar::-webkit-scrollbar {
-  width: 2px;
-}
-
-.prompt-copy-scrollbar::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.prompt-copy-scrollbar::-webkit-scrollbar-thumb {
-  min-height: 38px;
-  border-block: 7px solid transparent;
-  border-radius: 999px;
-  background: var(--accent);
-  background-clip: padding-box;
+  width: 0;
+  height: 0;
+  display: none;
 }
 
 .prompt-input-scrollbar {
   scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .prompt-input-scrollbar::-webkit-scrollbar {
+  width: 0;
+  height: 0;
   display: none;
 }
 

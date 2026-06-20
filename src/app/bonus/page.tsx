@@ -183,7 +183,7 @@ export default function BonusPage() {
               ))}
             </div>
           </nav>
-
+          <div className="bonus-sidebar-scroll mt-2 flex min-h-0 flex-1 flex-col overflow-y-auto overflow-x-hidden pr-1">
           <Tabs
             className="mt-2"
             value={mode}
@@ -270,6 +270,7 @@ export default function BonusPage() {
                 <Moon className="size-3" strokeWidth={1.6} />
               </Button>
             </div>
+          </div>
           </div>
         </aside>
 
@@ -378,8 +379,8 @@ export default function BonusPage() {
           </div>
         </section>
 
-<aside className="bonus-panel flex min-w-0 flex-col overflow-x-hidden overflow-y-auto p-3 sm:p-4 md:col-span-2 xl:col-span-1 xl:col-start-3 xl:row-start-2 xl:min-h-0 xl:max-h-[calc(100dvh-226px)]"> 
-<div className="bonus-timeline-scroll min-h-0 flex-1 overflow-visible pl-2 pr-0 sm:pl-3 xl:overflow-y-auto xl:overflow-x-hidden xl:pr-1">
+<aside className="bonus-panel flex min-w-0 flex-col overflow-hidden px-4 py-5 sm:px-6 sm:py-6 md:row-span-2 md:max-h-[calc(100dvh-32px)] md:min-h-0 md:px-5 md:py-5 lg:px-6 xl:row-span-2 xl:pb-4 xl:pt-4">
+  <div className="bonus-timeline-scroll min-h-0 flex-1 overflow-visible pl-2 pr-0 sm:pl-3 xl:overflow-y-auto xl:overflow-x-hidden xl:pr-1">
               {displayedTimeline.map((item, index) => (
               <article
                 key={`${item.time}-${index}`}
@@ -476,17 +477,19 @@ export default function BonusPage() {
             inset 0 1px 0 rgba(255, 255, 255, 0.9);
         }
 
-        .bonus-history-scroll,
-        .bonus-timeline-scroll,
-        .bonus-scrollbar {
-          scrollbar-width: none;
-        }
+      .bonus-history-scroll,
+.bonus-timeline-scroll,
+.bonus-scrollbar,
+.bonus-sidebar-scroll {
+  scrollbar-width: none;
+}
 
-        .bonus-history-scroll::-webkit-scrollbar,
-        .bonus-timeline-scroll::-webkit-scrollbar,
-        .bonus-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
+      .bonus-history-scroll::-webkit-scrollbar,
+.bonus-timeline-scroll::-webkit-scrollbar,
+.bonus-scrollbar::-webkit-scrollbar,
+.bonus-sidebar-scroll::-webkit-scrollbar {
+  display: none;
+}
 
         @keyframes bonus-fade {
           from {

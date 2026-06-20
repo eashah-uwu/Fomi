@@ -180,7 +180,7 @@ export function GenerationWorkbench() {
   );
 
   return (
-    <main className="min-h-dvh w-full max-w-full overflow-x-hidden bg-[image:var(--app-shell-background)] text-foreground">
+    <main className="flex min-h-dvh w-full max-w-full flex-col overflow-x-hidden bg-[image:var(--app-shell-background)] text-foreground lg:h-dvh lg:overflow-hidden">
       <TopNav
         activeTab={activeTab}
         activeDropdown={activeDropdown}
@@ -198,10 +198,10 @@ export function GenerationWorkbench() {
         onExpandedChange={setIsHistoryExpanded}
       />
 
-      <section
-        className="grid min-w-0 grid-cols-1 items-start gap-6 px-3 pb-8 sm:px-4 md:gap-7 lg:grid-cols-[286px_minmax(0,1fr)] lg:gap-[18px] lg:px-5 xl:gap-6 xl:pb-[38px] xl:pl-[38px] xl:pr-[27px]"
-        aria-label="AI content generator"
-      >
+    <section
+  className="scrollbar-none grid min-h-0 min-w-0 flex-1 grid-cols-1 items-start gap-6 overflow-y-auto px-3 pb-8 sm:px-4 md:gap-7 lg:grid-cols-[286px_minmax(0,1fr)] lg:items-stretch lg:gap-[18px] lg:overflow-hidden lg:px-5 xl:gap-6 xl:pb-[38px] xl:pl-[38px] xl:pr-[27px]"
+  aria-label="AI content generator"
+>
         <PromptPanel
           prompt={prompt}
           mode={mode}

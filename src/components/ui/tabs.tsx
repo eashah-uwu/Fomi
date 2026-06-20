@@ -19,13 +19,17 @@ type TabsTriggerProps = React.ComponentProps<typeof TabsPrimitive.Trigger> & {
   className?: string;
 };
 
+const TabsRootPrimitive = TabsPrimitive.Root as React.ComponentType<TabsProps>;
+const TabsListPrimitive = TabsPrimitive.List as React.ComponentType<TabsListProps>;
+const TabsTriggerPrimitive = TabsPrimitive.Trigger as React.ComponentType<TabsTriggerProps>;
+
 function Tabs({ className, ...props }: TabsProps) {
-  return <TabsPrimitive.Root data-slot="tabs" className={cn("flex flex-col", className)} {...props} />;
+  return <TabsRootPrimitive data-slot="tabs" className={cn("flex flex-col", className)} {...props} />;
 }
 
 function TabsList({ className, ...props }: TabsListProps) {
   return (
-    <TabsPrimitive.List
+    <TabsListPrimitive
       data-slot="tabs-list"
       className={cn("inline-flex items-center", className)}
       {...props}
@@ -35,7 +39,7 @@ function TabsList({ className, ...props }: TabsListProps) {
 
 function TabsTrigger({ className, ...props }: TabsTriggerProps) {
   return (
-    <TabsPrimitive.Trigger
+    <TabsTriggerPrimitive
       data-slot="tabs-trigger"
       className={cn(
         "inline-flex items-center justify-center whitespace-nowrap outline-none disabled:pointer-events-none disabled:opacity-50",

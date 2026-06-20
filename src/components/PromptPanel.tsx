@@ -62,39 +62,43 @@ export function PromptPanel({
   };
 
   return (
-    <aside
-      className="min-h-[451px] rounded-[17px] border border-accent/10 bg-soft p-[15px] shadow-panel-inset md:min-h-0 lg:min-h-[451px]"
-      aria-label="Generation controls"
-    >
+   <aside
+  className="w-full min-w-0 rounded-[17px] border border-accent/10 bg-soft p-[15px] shadow-panel-inset lg:h-full lg:min-h-0"
+  aria-label="Generation controls"
+>
       <div
         className="mx-1.5 mb-4 grid h-7 grid-cols-2 gap-1 overflow-hidden rounded-full bg-surface p-1"
         role="tablist"
         aria-label="Generation mode"
       >
-        <button
+        <Button
           className={cn(
-            "rounded-full px-3 text-[10px] font-bold transition-colors",
+            "h-full min-h-0 rounded-full px-3 text-[10px] font-bold transition-colors active:translate-y-0",
             mode === "image" ? "bg-soft-strong text-toggle-copy shadow-control" : "bg-transparent text-toggle-muted hover:bg-soft",
           )}
+          variant="ghost"
+          size="nav"
           type="button"
           role="tab"
           aria-selected={mode === "image"}
           onClick={() => onModeChange("image")}
         >
           Image
-        </button>
-        <button
+        </Button>
+        <Button
           className={cn(
-            "rounded-full px-3 text-[10px] font-bold transition-colors",
+            "h-full min-h-0 rounded-full px-3 text-[10px] font-bold transition-colors active:translate-y-0",
             mode === "video" ? "bg-soft-strong text-toggle-copy shadow-control" : "bg-transparent text-toggle-muted hover:bg-soft",
           )}
+          variant="ghost"
+          size="nav"
           type="button"
           role="tab"
           aria-selected={mode === "video"}
           onClick={() => onModeChange("video")}
         >
           Video
-        </button>
+        </Button>
       </div>
 
       <label className="sr-only" htmlFor="prompt-input">
@@ -102,7 +106,7 @@ export function PromptPanel({
       </label>
       <div className="relative mb-4 min-h-[170px]">
         <textarea
-          className="min-h-[170px] w-full resize-none rounded-2xl border-[1.5px] border-input-border bg-surface px-[11px] pb-[58px] pt-5 text-[11px] font-semibold leading-[1.45] text-foreground shadow-field outline-none placeholder:text-placeholder focus:border-accent focus:ring-4 focus:ring-accent/15"
+          className="scrollbar-none min-h-[170px] w-full resize-none overflow-y-auto rounded-2xl border border-[#efd5ca] bg-surface px-[11px] pb-[58px] pt-5 text-[11px] font-medium leading-[1.45] text-foreground shadow-none outline-none placeholder:text-placeholder focus:border-accent focus:ring-0"
           id="prompt-input"
           value={prompt}
           onChange={(event) => onPromptChange(event.target.value)}
@@ -121,14 +125,14 @@ export function PromptPanel({
         </Button>
       </div>
 
-      <div className="mb-4 grid grid-cols-[78px_58px_minmax(78px,1fr)] gap-[3px]" aria-label="Generation settings">
+      <div className="mb-4 grid min-w-0 grid-cols-[minmax(0,1.15fr)_minmax(0,.8fr)_minmax(0,1fr)] gap-1.5" aria-label="Generation settings">
         <Select
           open={activeDropdown === "count"}
           value={settings.count}
           onOpenChange={handleOpenChange("count")}
           onValueChange={(count) => onSettingsChange({ count })}
         >
-          <SelectTrigger className="text-xs text-center" aria-label={mode === "image" ? "Number of images" : "Number of videos"}>
+          <SelectTrigger className="w-full min-w-0 px-2 text-center text-[11px] sm:text-xs" aria-label={mode === "image" ? "Number of images" : "Number of videos"}>
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -143,7 +147,7 @@ export function PromptPanel({
           onOpenChange={handleOpenChange("ratio")}
           onValueChange={(ratio) => onSettingsChange({ ratio })}
         >
-          <SelectTrigger className="text-xs text-center" aria-label="Aspect ratio">
+          <SelectTrigger className="w-full min-w-0 px-2 text-center text-[11px] sm:text-xs" aria-label="Aspect ratio">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -158,7 +162,7 @@ export function PromptPanel({
           onOpenChange={handleOpenChange("model")}
           onValueChange={(model) => onSettingsChange({ model })}
         >
-          <SelectTrigger className="min-w-0 text-xs" aria-label="Model">
+          <SelectTrigger className="w-full min-w-0 px-2 text-center text-[11px] sm:text-xs" aria-label="Model">
             <SelectValue>{settings.model.replace("Fomi ", "")}</SelectValue>
           </SelectTrigger>
           <SelectContent>
@@ -177,7 +181,7 @@ export function PromptPanel({
         >
           <DropdownMenuTrigger asChild>
             <Button
-              className="h-[33px] w-full justify-center gap-[53px] text-sm "
+              className="h-[33px] w-full justify-between px-5 text-[13px] font-medium text-control-text"
               variant="white"
               size="pill"
               type="button"
@@ -189,7 +193,7 @@ export function PromptPanel({
               >
                 <ChevronDown
                   className={cn("size-3 transition-transform", activeDropdown === "advance" && "rotate-180")}
-                  strokeWidth={2.4}
+                  strokeWidth={1.8}
                 />
               </span>
             </Button>
@@ -228,7 +232,7 @@ export function PromptPanel({
         >
           <DropdownMenuTrigger asChild>
             <Button
-              className="h-[33px] w-full justify-center gap-[53px] text-sm font-semibold"
+              className="h-[33px] w-full justify-between px-5 text-[13px] font-medium text-control-text"
               variant="white"
               size="pill"
               type="button"
@@ -240,7 +244,7 @@ export function PromptPanel({
               >
                 <ChevronDown
                   className={cn("size-3 transition-transform", activeDropdown === "styles" && "rotate-180")}
-                  strokeWidth={2.4}
+                  strokeWidth={1.8}
                 />
               </span>
             </Button>

@@ -13,11 +13,15 @@ type SelectTriggerProps = React.ComponentPropsWithoutRef<typeof SelectPrimitive.
   className?: string;
 };
 
+const SelectTriggerPrimitive = SelectPrimitive.Trigger as React.ComponentType<
+  SelectTriggerProps & React.RefAttributes<HTMLButtonElement>
+>;
+
 const SelectTrigger = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Trigger>,
   SelectTriggerProps
 >(({ className, children, ...props }, ref) => (
-  <SelectPrimitive.Trigger
+  <SelectTriggerPrimitive
     ref={ref}
     className={cn(
       "inline-flex h-[26px] items-center justify-between gap-1 overflow-hidden whitespace-nowrap rounded-full border-0 bg-surface px-2 text-[9px] font-bold text-control-text outline-none shadow-control transition-colors focus:ring-4 focus:ring-accent/20 disabled:cursor-not-allowed disabled:opacity-60 [&_[data-radix-select-value]]:min-w-0 [&_[data-radix-select-value]]:truncate",
@@ -29,7 +33,7 @@ const SelectTrigger = React.forwardRef<
     <SelectPrimitive.Icon asChild>
       <ChevronDown className="size-3" strokeWidth={2.2} />
     </SelectPrimitive.Icon>
-  </SelectPrimitive.Trigger>
+  </SelectTriggerPrimitive>
 ));
 SelectTrigger.displayName = SelectPrimitive.Trigger.displayName;
 
