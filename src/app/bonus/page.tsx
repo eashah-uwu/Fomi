@@ -141,9 +141,9 @@ export default function BonusPage() {
   };
 
   return (
-<main className="bonus-page min-h-[100dvh] overflow-x-clip bg-[#f8f1ed] p-2 text-[#11110f] sm:p-3 md:p-4 xl:min-h-[100dvh]">    
-<div className="mx-auto grid min-h-[calc(100dvh-16px)] min-w-0 max-w-[1920px] grid-cols-1 gap-3 sm:min-h-[calc(100dvh-24px)] md:min-h-[calc(100dvh-32px)] md:grid-cols-[300px_minmax(0,1fr)] md:gap-4 lg:grid-cols-[320px_minmax(0,1fr)] xl:grid-cols-[minmax(280px,320px)_minmax(0,1fr)_minmax(300px,380px)] xl:grid-rows-[178px_minmax(0,1fr)]">
-  <aside className="bonus-panel flex min-w-0 flex-col overflow-x-hidden overflow-y-auto px-4 py-5 sm:px-6 sm:py-6 md:row-span-2 md:max-h-[calc(100dvh-32px)] md:min-h-0 md:px-5 md:py-5 lg:px-6 xl:row-span-2 xl:pb-4 xl:pt-4">          <div className="flex items-center gap-2">
+<main className="bonus-page min-h-[100dvh] overflow-x-clip bg-[#f8f1ed] p-2 text-[#11110f] sm:p-3 md:p-4 lg:h-[100dvh] lg:overflow-hidden xl:min-h-[100dvh]">    
+<div className="mx-auto grid min-h-[calc(100dvh-16px)] min-w-0 max-w-[1920px] grid-cols-1 gap-3 sm:min-h-[calc(100dvh-24px)] md:min-h-[calc(100dvh-32px)] md:grid-cols-[300px_minmax(0,1fr)] md:gap-4 lg:h-[calc(100dvh-32px)] lg:min-h-0 lg:grid-cols-[minmax(230px,260px)_minmax(0,1fr)_minmax(210px,240px)] lg:grid-rows-[minmax(92px,116px)_minmax(0,1fr)] lg:gap-3 xl:grid-cols-[minmax(280px,320px)_minmax(0,1fr)_minmax(300px,380px)] xl:grid-rows-[178px_minmax(0,1fr)] xl:gap-4">
+  <aside className="bonus-panel flex min-w-0 flex-col overflow-x-hidden overflow-y-auto px-4 py-5 sm:px-6 sm:py-6 md:row-span-2 md:max-h-[calc(100dvh-32px)] md:min-h-0 md:px-5 md:py-5 lg:row-span-2 lg:max-h-none lg:px-4 lg:py-4 xl:row-span-2 xl:px-6 xl:pb-4 xl:pt-4">          <div className="flex items-center gap-2">
             <span className="text-[30px] font-black tracking-[-0.07em]">FOMI</span>
             <Sparkles className="size-5 fill-[#e56e4d] text-[#e56e4d]" strokeWidth={1.6} />
           </div>
@@ -203,7 +203,7 @@ export default function BonusPage() {
           </Tabs>
 
           <div className="mt-2 rounded-[24px] bg-[#eaded7] p-[5px] shadow-[inset_0_1px_0_rgba(255,255,255,0.7)]">
-            <div className="relative h-[250px] rounded-[20px] bg-white shadow-[inset_0_0_0_1px_rgba(60,45,38,0.18)] sm:h-[290px] md:h-[clamp(190px,24vh,250px)] xl:h-[clamp(155px,17.5vh,185px)]">
+            <div className="relative h-[250px] rounded-[20px] bg-white shadow-[inset_0_0_0_1px_rgba(60,45,38,0.18)] sm:h-[290px] md:h-[clamp(190px,24vh,250px)] lg:h-[clamp(130px,22vh,165px)] xl:h-[clamp(155px,17.5vh,185px)]">
               <textarea
                 className="bonus-scrollbar absolute inset-0 h-full w-full resize-none rounded-[20px] bg-transparent px-4 pb-14 pt-5 text-[12px] leading-[1.65] outline-none"
                 maxLength={1000}
@@ -229,7 +229,7 @@ export default function BonusPage() {
               type="button"
               variant="white"
               radius="md"
-              className="h-[42px] justify-between rounded-[14px] px-5 text-[13px] font-semibold shadow-[0_5px_22px_rgba(83,48,34,0.05)]"
+              className="h-[38px] justify-between rounded-[14px] px-5 text-[13px] font-medium text-[#2f2925] shadow-[0_5px_22px_rgba(83,48,34,0.05)] xl:h-[42px]"
             >
               Advance
               <SlidersHorizontal className="size-[17px]" strokeWidth={1.6} />
@@ -238,7 +238,7 @@ export default function BonusPage() {
               type="button"
               variant="white"
               radius="md"
-              className="h-[42px] justify-between rounded-[14px] px-5 text-[13px] font-semibold shadow-[0_5px_22px_rgba(83,48,34,0.05)]"
+              className="h-[38px] justify-between rounded-[14px] px-5 text-[13px] font-medium text-[#2f2925] shadow-[0_5px_22px_rgba(83,48,34,0.05)] xl:h-[42px]"
             >
               Styles
               <Sparkles className="size-[17px]" strokeWidth={1.6} />
@@ -247,7 +247,7 @@ export default function BonusPage() {
 
           <Button
             type="button"
-            className="group mb-0 mt-2 h-[52px] w-full shrink-0 rounded-[16px] bg-[#e66d4c] text-[18px] font-bold text-white shadow-[0_18px_38px_rgba(226,103,70,0.22)] hover:bg-[#dc6241] active:scale-[0.985] active:translate-y-0"
+            className="group mb-0 mt-2 h-[46px] w-full shrink-0 rounded-[16px] bg-[#e66d4c] text-[16px] font-bold text-white shadow-[0_18px_38px_rgba(226,103,70,0.22)] hover:bg-[#dc6241] active:scale-[0.985] active:translate-y-0 xl:h-[52px] xl:text-[18px]"
             disabled={isGenerating}
             onClick={generate}
           >
@@ -274,7 +274,7 @@ export default function BonusPage() {
           </div>
         </aside>
 
-        <section className="bonus-panel min-w-0 px-4 py-4 sm:px-5 md:col-start-2 md:px-5 lg:px-6 xl:col-span-2 xl:col-start-2">
+        <section className="bonus-panel min-w-0 overflow-hidden px-4 py-4 sm:px-5 md:col-start-2 md:px-5 lg:col-span-2 lg:col-start-2 lg:row-start-1 lg:px-4 lg:py-3 xl:col-span-2 xl:col-start-2 xl:px-6 xl:py-4">
           <div className="mb-3 flex items-center gap-3">
             <div className="flex items-center gap-3">
               <h2 className="text-[14px] font-bold">History</h2>
@@ -294,7 +294,7 @@ export default function BonusPage() {
                 size="nav"
                 radius="none"
                 aria-label={`Open ${label}`}
-                className="relative size-16 min-h-0 shrink-0 overflow-hidden rounded-[8px] p-0 ring-1 ring-black/[0.03] active:translate-y-0 sm:size-[70px] xl:size-[78px] min-[1500px]:size-[82px]"
+                className="relative size-16 min-h-0 shrink-0 overflow-hidden rounded-[8px] p-0 ring-1 ring-black/[0.03] active:translate-y-0 sm:size-[70px] lg:size-[52px] xl:size-[78px] min-[1500px]:size-[82px]"
                 onClick={() => {
                   setSelectedHistory(index);
                   setHeroImage(imageUrl(imageId, 1100, 1400));
@@ -313,7 +313,7 @@ export default function BonusPage() {
               type="button"
               variant="ghost"
               size="icon"
-              className="ml-auto size-9 shrink-0 bg-[#fff2ec] text-[#d76545] hover:bg-[#fde8df] sm:size-10"
+              className="ml-auto size-9 shrink-0 bg-[#fff2ec] text-[#d76545] hover:bg-[#fde8df] sm:size-10 lg:size-8 xl:size-10"
               aria-label="Next history items"
             >
               <ChevronRight className="size-5" strokeWidth={1.5} />
@@ -321,10 +321,10 @@ export default function BonusPage() {
           </div>
         </section>
 
-        <section className="min-w-0 rounded-[22px] bg-white/70 p-1 shadow-[0_18px_60px_rgba(91,53,38,0.06),inset_0_0_0_1px_rgba(255,255,255,0.9)] sm:rounded-[28px] sm:p-[5px] md:col-start-2 md:row-start-2 md:min-h-0 xl:col-start-2 xl:row-start-2">
+        <section className="min-w-0 overflow-hidden rounded-[22px] bg-white/70 p-1 shadow-[0_18px_60px_rgba(91,53,38,0.06),inset_0_0_0_1px_rgba(255,255,255,0.9)] sm:rounded-[28px] sm:p-[5px] md:col-start-2 md:row-start-2 md:min-h-0 lg:col-start-2 lg:row-start-2 xl:col-start-2 xl:row-start-2">
           <div className="flex h-full min-h-0 flex-col rounded-[19px] bg-[#fffdfc] p-3 shadow-[inset_0_0_0_1px_rgba(220,190,178,0.44)] sm:rounded-[24px] sm:p-4 lg:p-5">
             <div className="grid min-h-0 flex-1 grid-cols-1 gap-2.5 sm:gap-3 md:grid-cols-[minmax(0,2.25fr)_minmax(130px,.9fr)] xl:grid-cols-[minmax(0,2.65fr)_minmax(165px,1fr)]">
-              <div className="group relative aspect-[4/5] min-h-0 overflow-hidden rounded-[11px] bg-[#ece4df] sm:aspect-[4/3] md:aspect-auto md:min-h-[470px] xl:min-h-0">
+              <div className="group relative aspect-[4/5] min-h-0 overflow-hidden rounded-[11px] bg-[#ece4df] sm:aspect-[4/3] md:aspect-auto md:min-h-[470px] lg:min-h-0 xl:min-h-0">
                 <Image
                   key={heroImage}
                   src={heroImage}
@@ -379,12 +379,12 @@ export default function BonusPage() {
           </div>
         </section>
 
-<aside className="bonus-panel flex min-w-0 flex-col overflow-hidden px-4 py-5 sm:px-6 sm:py-6 md:row-span-2 md:max-h-[calc(100dvh-32px)] md:min-h-0 md:px-5 md:py-5 lg:px-6 xl:row-span-2 xl:pb-4 xl:pt-4">
-  <div className="bonus-timeline-scroll min-h-0 flex-1 overflow-visible pl-2 pr-0 sm:pl-3 xl:overflow-y-auto xl:overflow-x-hidden xl:pr-1">
+<aside className="bonus-panel flex min-w-0 flex-col overflow-hidden px-4 py-5 sm:px-6 sm:py-6 md:col-start-2 md:row-start-3 md:min-h-[320px] md:px-5 md:py-5 lg:col-start-3 lg:row-start-2 lg:min-h-0 lg:px-3 lg:py-3 xl:col-start-3 xl:row-start-2 xl:px-4 xl:py-5">
+  <div className="bonus-timeline-scroll min-h-0 flex-1 overflow-y-auto overflow-x-hidden pl-2 pr-1 sm:pl-3 lg:pl-1 xl:pl-3">
               {displayedTimeline.map((item, index) => (
               <article
                 key={`${item.time}-${index}`}
-                className={`relative grid min-h-0 cursor-pointer grid-cols-1 gap-3 rounded-[16px] px-3 py-4 outline-none transition-[background,box-shadow,transform] duration-300 [transition-timing-function:cubic-bezier(.32,.72,0,1)] focus-visible:ring-2 focus-visible:ring-[#e56e4d]/30 sm:grid-cols-[minmax(0,.9fr)_minmax(180px,1.22fr)] sm:gap-4 sm:rounded-[18px] sm:px-4 sm:py-3 md:min-h-[170px] xl:min-h-[185px] xl:grid-cols-[minmax(0,.9fr)_minmax(150px,1.22fr)] ${
+                className={`relative grid min-h-0 cursor-pointer grid-cols-1 gap-3 rounded-[16px] px-3 py-4 outline-none transition-[background,box-shadow,transform] duration-300 [transition-timing-function:cubic-bezier(.32,.72,0,1)] focus-visible:ring-2 focus-visible:ring-[#e56e4d]/30 sm:grid-cols-[minmax(0,.9fr)_minmax(180px,1.22fr)] sm:gap-4 sm:rounded-[18px] sm:px-4 sm:py-3 md:min-h-[170px] lg:grid-cols-1 lg:gap-2 lg:rounded-[14px] lg:px-3 lg:py-3 lg:min-h-0 xl:min-h-[185px] xl:grid-cols-[minmax(0,.9fr)_minmax(150px,1.22fr)] ${
                   selectedTimeline === index
                     ? "bg-[#fbebe4] shadow-[inset_0_0_0_1px_rgba(229,110,77,0.10)]"
                     : "hover:bg-[#fff8f5]"
@@ -414,13 +414,13 @@ export default function BonusPage() {
                 ) : null}
 
                 <div className="flex min-w-0 flex-col">
-                  <p className="text-[11px] leading-[1.5]">{item.prompt}</p>
+                  <p className="text-[11px] leading-[1.5] lg:text-[10px] lg:leading-[1.35] xl:text-[11px] xl:leading-[1.5]">{item.prompt}</p>
                   <div className="mt-auto flex items-center justify-between gap-3 pt-3 text-[10px]">
                     <span className="rounded-lg bg-[#f7dfd5] px-2 py-1.5">{item.model}</span>
                     <time className="whitespace-nowrap text-[#554e4a]">{item.time}</time>
                   </div>
                 </div>
-                <div className="grid grid-cols-4 gap-1.5 sm:grid-cols-2">
+                <div className="grid grid-cols-4 gap-1.5 sm:grid-cols-2 lg:grid-cols-2">
                   {item.images.map((src, imageIndex) => (
                     <Button
                       key={`${src}-${imageIndex}`}
@@ -428,7 +428,7 @@ export default function BonusPage() {
                       variant="ghost"
                       size="nav"
                       radius="none"
-                      className="relative aspect-square min-h-0 overflow-hidden rounded-[7px] p-0 active:translate-y-0 sm:aspect-auto sm:min-h-[72px]"
+                      className="relative aspect-square min-h-0 overflow-hidden rounded-[7px] p-0 active:translate-y-0 sm:aspect-auto sm:min-h-[72px] lg:aspect-square lg:min-h-0 xl:aspect-auto xl:min-h-[72px]"
                       onClick={(event) => {
                         event.stopPropagation();
                         setSelectedTimeline(index);
@@ -447,7 +447,7 @@ export default function BonusPage() {
             type="button"
             variant="white"
             radius="md"
-            className="mt-3 h-11 w-full justify-center gap-10 rounded-[14px] text-[11px] font-medium shadow-[inset_0_0_0_1px_rgba(218,197,187,0.42)] sm:h-[50px] sm:gap-16"
+            className="mt-3 h-11 w-full justify-center gap-10 rounded-[14px] text-[11px] font-medium shadow-[inset_0_0_0_1px_rgba(218,197,187,0.42)] sm:h-[50px] sm:gap-16 lg:h-9 lg:gap-8 xl:h-11 xl:gap-10"
             onClick={() => setShowExtra((value) => !value)}
           >
             {showExtra ? "Show less" : "Load more"}

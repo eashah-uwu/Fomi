@@ -199,8 +199,7 @@ export function GenerationWorkbench() {
       />
 
     <section
-  className="scrollbar-none grid min-h-0 min-w-0 flex-1 grid-cols-1 items-start gap-6 overflow-y-auto px-3 pb-8 sm:px-4 md:gap-7 lg:grid-cols-[286px_minmax(0,1fr)] lg:items-stretch lg:gap-[18px] lg:overflow-hidden lg:px-5 xl:gap-6 xl:pb-[38px] xl:pl-[38px] xl:pr-[27px]"
-  aria-label="AI content generator"
+className="scrollbar-none grid min-h-0 min-w-0 flex-1 grid-cols-1 items-start gap-6 overflow-y-auto px-3 pb-8 sm:px-4 md:gap-7 lg:grid-cols-[286px_minmax(0,1fr)] lg:items-start lg:gap-[18px] lg:overflow-y-auto lg:px-5 xl:items-stretch xl:overflow-hidden xl:gap-6 xl:pb-[38px] xl:pl-[38px] xl:pr-[27px]"  aria-label="AI content generator"
 >
         <PromptPanel
           prompt={prompt}

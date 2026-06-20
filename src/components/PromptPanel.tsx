@@ -63,8 +63,7 @@ export function PromptPanel({
 
   return (
    <aside
-  className="w-full min-w-0 rounded-[17px] border border-accent/10 bg-soft p-[15px] shadow-panel-inset lg:h-full lg:min-h-0"
-  aria-label="Generation controls"
+className="w-full min-w-0 self-start rounded-[17px] border border-accent/10 bg-soft p-[15px] shadow-panel-inset lg:h-auto lg:min-h-[451px] xl:h-full xl:min-h-0 xl:self-stretch"  aria-label="Generation controls"
 >
       <div
         className="mx-1.5 mb-4 grid h-7 grid-cols-2 gap-1 overflow-hidden rounded-full bg-surface p-1"
